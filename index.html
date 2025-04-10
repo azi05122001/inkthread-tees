@@ -156,7 +156,7 @@
     }
 
     .delivery-form {
-      max-width: 600px;
+      max-width: 700px;
       margin: 2rem auto;
       background: white;
       padding: 2rem;
@@ -169,19 +169,29 @@
       margin-bottom: 1.5rem;
     }
 
+    .delivery-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     .delivery-form label {
-      display: block;
-      margin-top: 1rem;
       font-weight: 600;
+      margin-bottom: 0.3rem;
     }
 
     .delivery-form input {
       width: 100%;
       padding: 0.8rem;
-      margin-top: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1rem;
+    }
+
+    .delivery-form .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
     .delivery-form button {
@@ -205,6 +215,12 @@
       text-align: center;
       margin-top: 2rem;
       font-size: 1.1rem;
+    }
+
+    @media (max-width: 600px) {
+      .delivery-form .grid-2 {
+        grid-template-columns: 1fr;
+      }
     }
 
     #contact {
@@ -284,23 +300,33 @@
 <section class="delivery-form">
   <h2>Enter Delivery Address</h2>
   <form id="delivery-form">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" required />
-
-    <label for="email">Email</label>
-    <input type="email" id="email" required />
+    <div class="grid-2">
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" required />
+      </div>
+    </div>
 
     <label for="address">Address</label>
-    <input type="text" id="address" required />
+    <input type="text" id="address" required placeholder="Street address, Apartment, etc." />
 
-    <label for="city">City</label>
-    <input type="text" id="city" required />
-
-    <label for="state">State</label>
-    <input type="text" id="state" required />
+    <div class="grid-2">
+      <div>
+        <label for="city">City</label>
+        <input type="text" id="city" required />
+      </div>
+      <div>
+        <label for="state">State</label>
+        <input type="text" id="state" required />
+      </div>
+    </div>
 
     <label for="pincode">PIN Code</label>
-    <input type="text" id="pincode" required pattern="\d{6}" />
+    <input type="text" id="pincode" required pattern="\d{6}" placeholder="e.g. 700001" />
 
     <button type="submit">Calculate Shipping</button>
   </form>
@@ -347,7 +373,7 @@
       '400001': 2500
     };
 
-    const distance = pinCodeDistances[pincode] || 500; // Default mid-range
+    const distance = pinCodeDistances[pincode] || 500;
     if (distance <= 50) return 15;
     if (distance <= 200) return 35;
     if (distance <= 1000) return 50;
