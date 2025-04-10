@@ -6,19 +6,174 @@
   <title>InkThread Tees | Custom Printed T-Shirts</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #111;
+      --accent: #ff4d4d;
+      --bg: #f4f4f4;
+      --card-bg: #fff;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #f7f7f7; color: #333; }
-    header, nav, section, footer { padding: 2rem 1rem; text-align: center; }
-    nav a { margin: 0 1rem; text-decoration: none; color: #111; font-weight: 600; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: auto; }
-    .product { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .product img { width: 100%; border-radius: 5px; }
-    .product h3, .product p { margin: 0.5rem 0; }
-    .cart-controls { margin-top: 0.5rem; }
-    .cart-controls button { padding: 0.3rem 0.6rem; margin: 0 0.3rem; font-weight: bold; cursor: pointer; }
-    .checkout { text-align: center; margin-top: 2rem; }
-    .checkout button { padding: 0.8rem 1.5rem; background: #111; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
-    .checkout p { margin-bottom: 1rem; font-weight: bold; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #111, #333);
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #111;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    h2 {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      font-size: 2rem;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+
+    .product {
+      background: var(--card-bg);
+      padding: 1.2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s ease-in-out;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .product h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product p {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .cart-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cart-controls button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .cart-controls button:hover {
+      background: #e63636;
+    }
+
+    .checkout {
+      margin: 3rem auto;
+      text-align: center;
+    }
+
+    .checkout p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .checkout button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .checkout button:hover {
+      background: var(--accent);
+      transform: scale(1.05);
+    }
+
+    #contact {
+      background: #111;
+      color: white;
+      padding: 3rem 1rem;
+    }
+
+    #contact a {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -37,7 +192,7 @@
   <h2>Popular Picks</h2>
   <div class="products">
     <div class="product" data-id="1" data-price="20">
-      <img src="https://via.placeholder.com/300x300?text=T-Shirt+1" alt="T-Shirt 1">
+      <img src="https://via.placeholder.com/300x300?text=Logo+Tee" alt="T-Shirt 1">
       <h3>Classic Logo Tee</h3>
       <p>$20.00</p>
       <div class="cart-controls">
@@ -47,7 +202,7 @@
       </div>
     </div>
     <div class="product" data-id="2" data-price="22">
-      <img src="https://via.placeholder.com/300x300?text=T-Shirt+2" alt="T-Shirt 2">
+      <img src="https://via.placeholder.com/300x300?text=Quote+Tee" alt="T-Shirt 2">
       <h3>Minimalist Quote Tee</h3>
       <p>$22.00</p>
       <div class="cart-controls">
@@ -57,7 +212,7 @@
       </div>
     </div>
     <div class="product" data-id="3" data-price="25">
-      <img src="https://via.placeholder.com/300x300?text=T-Shirt+3" alt="T-Shirt 3">
+      <img src="https://via.placeholder.com/300x300?text=Custom+Tee" alt="T-Shirt 3">
       <h3>Custom Design Tee</h3>
       <p>$25.00</p>
       <div class="cart-controls">
@@ -70,13 +225,14 @@
 </section>
 
 <section class="checkout">
-  <p>Total: $<span id="total">0</span></p>
+  <p>Total: $<span id="total">0.00</span></p>
   <button onclick="checkout()">Checkout</button>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Let's Connect</h2>
   <p>Email: <a href="mailto:hello@inkthreadtees.com">hello@inkthreadtees.com</a></p>
+  <p>Instagram: <a href="#">@inkthreadtees</a></p>
 </section>
 
 <footer>
@@ -84,17 +240,8 @@
 </footer>
 
 <script>
-  let cart = {
-    1: 0,
-    2: 0,
-    3: 0
-  };
-
-  const prices = {
-    1: 20,
-    2: 22,
-    3: 25
-  };
+  let cart = { 1: 0, 2: 0, 3: 0 };
+  const prices = { 1: 20, 2: 22, 3: 25 };
 
   function changeQty(id, delta) {
     cart[id] = Math.max(0, cart[id] + delta);
@@ -113,17 +260,12 @@
   function checkout() {
     const totalAmount = Object.keys(cart).reduce((sum, id) => sum + cart[id] * prices[id], 0);
     if (totalAmount === 0) {
-      alert("Please add something to the cart before checkout!");
+      alert("Your cart is empty!");
       return;
     }
 
-    // Simulate checkout with Stripe (this will be replaced by your backend call)
-    alert(`Redirecting to payment gateway...\nTotal: $${totalAmount.toFixed(2)}`);
-
-    // Real Stripe Redirect Example:
-    // window.location.href = "https://checkout.stripe.com/pay/YOUR_CHECKOUT_SESSION_ID";
-
-    // TEMPORARY: redirect to thank you page
+    alert(`Redirecting to payment for $${totalAmount.toFixed(2)}...`);
+    // Replace this with your real Stripe checkout link
     window.location.href = "https://buy.stripe.com/test_dummy-checkout-link";
   }
 </script>
